@@ -14,6 +14,7 @@ using System.Text.Json;
 
 namespace PRUEBA.ADMIN.API.Middleware
 {
+
     public class AuthenticationMiddleware
     {
         protected readonly RequestDelegate next;
