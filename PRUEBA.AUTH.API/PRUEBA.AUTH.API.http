@@ -1,0 +1,6 @@
+@PRUEBA.AUTH.API_HostAddress = http://localhost:5228
+
+GET {{PRUEBA.AUTH.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
