@@ -1,6 +1,0 @@
-@PRUEBA.TRANSAC.API_HostAddress = http://localhost:5057
-
-GET {{PRUEBA.TRANSAC.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

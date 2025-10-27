@@ -47,6 +47,8 @@ namespace PRUEBA.TRANSAC.API.Middleware
                     await EscribirRespuestaJson(context, StatusCodes.Status400BadRequest, "Payload no encontrado.");
                     return;
                 }
+
+                await next(context);
             }
             catch (ArgumentNullException ex)
             {
