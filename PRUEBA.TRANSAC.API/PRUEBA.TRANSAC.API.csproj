@@ -12,13 +12,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\COM.PRUEBA.APLICACION.SERVICE\COM.PRUEBA.APLICACION.SERVICE.csproj" />
-    <ProjectReference Include="..\COM.PRUEBA.DOMAIN\COM.PRUEBA.DOMAIN.csproj" />
-    <ProjectReference Include="..\PRUEBA.COMMON.PRESENTACION\PRUEBA.COMMON.PRESENTACION.csproj" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Settings\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Filter\" />
+    <ProjectReference Include="..\COM.PRUEBA.APLICACION.SERVICE\COM.PRUEBA.APLICACION.SERVICE.csproj" />
+    <ProjectReference Include="..\COM.PRUEBA.DOMAIN\COM.PRUEBA.DOMAIN.csproj" />
+    <ProjectReference Include="..\PRUEBA.COMMON.PRESENTACION\PRUEBA.COMMON.PRESENTACION.csproj" />
   </ItemGroup>
 
 </Project>

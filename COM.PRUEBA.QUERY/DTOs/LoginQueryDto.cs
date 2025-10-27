@@ -13,8 +13,6 @@ namespace COM.PRUEBA.QUERY.DTOs
         public string Nombre { get; set; }        
         public string Apellido { get; set; }      
         public string Email { get; set; }         
-        public int RolId { get; set; }            
-        public string NombreRol { get; set; }     
         public bool Estado { get; set; }
         public string? token { get; set; }
         public DateTime? fechaExpiracion { get; set; }

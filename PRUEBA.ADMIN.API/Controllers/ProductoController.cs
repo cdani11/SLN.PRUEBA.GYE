@@ -1,45 +1,41 @@
-﻿using COM.PRUEBA.APLICACION.Interfaces.AppServices;
-using COM.PRUEBA.APLICACION.SERVICE.AppServices;
+using COM.PRUEBA.APLICACION.DTOs.Producto;
+using COM.PRUEBA.APLICACION.Interfaces.AppServices;
 using COM.PRUEBA.APLICACION.SERVICE.Constants;
-using COM.PRUEBA.DOMAIN.Constans;
-using COM.PRUEBA.QUERY.DTOs.Shared;
 using COM.PRUEBA.QUERY.DTOs;
+using COM.PRUEBA.QUERY.DTOs.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PRUEBA.ADMIN.API.Filter;
-using COM.PRUEBA.APLICACION.DTOs.Admin;
 
 namespace PRUEBA.ADMIN.API.Controllers
 {
     [Authorize]
-    [ApiController]
     [Route("api")]
-    public class UsuarioController : ControllerBase
+    [ApiController]
+    public class ProductoController : ControllerBase
     {
-        private readonly IAdminAppServices adminAppServices;
-        public UsuarioController(IAdminAppServices adminAppServices)
+        private readonly IProductoAppServices productoAppServices;
+        public ProductoController(IProductoAppServices productoAppServices)
         {
-            this.adminAppServices = adminAppServices; ;
+            this.productoAppServices = productoAppServices;
         }
 
-
         /// <summary>
-        /// Consultar solicitudes ingresadas por el usuario
-        /// </summary>      
+        /// Consultar productos
+        /// </summary>
+        /// <returns>Tipo List<ProductoQueryDto></returns>
         /// <response code="200">OK. Procesado correctamente.</response>
         /// <response code="500">Error. Verificar mensaje de excepción</response>
         /// <response code="401">Credenciales inválidas</response>
         [Consumes(AppConstants.WEB_API_TYPE_JSON)]
         [Produces(AppConstants.WEB_API_TYPE_JSON)]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SharedAppResultDto<List<SolicitudQueryDto>>))]
-        [HttpGet(DomainConstants.PRUEBA_METHODNAME_API_ADMIN_CONSULTA)]
-        [ServiceFilter(typeof(ValidateModelConsultaSolicitudes))]
-        public async Task<IActionResult> consultaAsync(string Usuario)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SharedAppResultDto<List<ProductoQueryDto>>))]
+        [HttpGet]
+        public async Task<IActionResult> ConsultarAsync()
         {
             try
             {
-                var result = await adminAppServices.ConsultarSolicitudesPorUsuario(Usuario);
+                var result = await productoAppServices.ConsultarProductosAsync();
 
                 return Ok(result);
             }
@@ -52,25 +48,25 @@ namespace PRUEBA.ADMIN.API.Controllers
             }
         }
 
-
         /// <summary>
-        /// Registrar solicitudes por el usuario
-        /// </summary>      
+        /// Registrar producto
+        /// </summary>
+        /// <param name="producto"></param>
+        /// <returns>Tipo booleano</returns>
         /// <response code="200">OK. Procesado correctamente.</response>
         /// <response code="500">Error. Verificar mensaje de excepción</response>
         /// <response code="401">Credenciales inválidas</response>
         [Consumes(AppConstants.WEB_API_TYPE_JSON)]
         [Produces(AppConstants.WEB_API_TYPE_JSON)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SharedAppResultDto<bool>))]
-        [HttpPost(DomainConstants.PRUEBA_METHODNAME_API_ADMIN_REGISTROSOLICITUD)]
-        [ServiceFilter(typeof(ValidateModelRegistroSolicitudesXUsuario))]
-        public async Task<IActionResult> registroAsync(RegistroSolicitudAppDto Solicitud)
+        [HttpPost]
+        public async Task<IActionResult> RegistrarAsync(ProductoAppDto producto)
         {
             try
             {
-                var result = await adminAppServices.RegistrarSolicitud(Solicitud);
+                var result = await productoAppServices.RegistrarProductoAsync(producto);
 
-                return Ok(result);
+                return Ok(true);
             }
             catch (Exception ex)
             {
@@ -81,25 +77,25 @@ namespace PRUEBA.ADMIN.API.Controllers
             }
         }
 
-
         /// <summary>
-        /// Registrar solicitudes por el usuario
-        /// </summary>      
+        /// Actualizar producto
+        /// </summary>
+        /// <param name="producto"></param>
+        /// <returns>Tipo booleano</returns>
         /// <response code="200">OK. Procesado correctamente.</response>
         /// <response code="500">Error. Verificar mensaje de excepción</response>
         /// <response code="401">Credenciales inválidas</response>
-        [Consumes(AppConstants.WEB_API_TYPE_JSON)]
+        /// [Consumes(AppConstants.WEB_API_TYPE_JSON)]
         [Produces(AppConstants.WEB_API_TYPE_JSON)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SharedAppResultDto<bool>))]
-        [HttpPut(DomainConstants.PRUEBA_METHODNAME_API_ADMIN_ACTUALIZARSOLICITUD)]
-        [ServiceFilter(typeof(ValidateModelRegistroSolicitudesXUsuario))]
-        public async Task<IActionResult> ActualizarregistroAsync(ActualizarSolicitudAppDto Solicitud)
+        [HttpPut]
+        public async Task<IActionResult> ActualizarAsync(ProductoAppDto producto)
         {
             try
             {
-                var result = await adminAppServices.ActualizarSolicitud(Solicitud);
+                var result = await productoAppServices.ActualizarProductoAsync(producto);
 
-                return Ok(result);
+                return Ok(true);
             }
             catch (Exception ex)
             {
@@ -109,26 +105,26 @@ namespace PRUEBA.ADMIN.API.Controllers
             {
             }
         }
-
-
+        
         /// <summary>
-        /// Registrar solicitudes por el usuario
-        /// </summary>      
+        /// Eliminar producto
+        /// </summary>
+        /// <param name="productoId"></param>
+        /// <returns>Tipo booleano</returns>
         /// <response code="200">OK. Procesado correctamente.</response>
         /// <response code="500">Error. Verificar mensaje de excepción</response>
         /// <response code="401">Credenciales inválidas</response>
-        [Consumes(AppConstants.WEB_API_TYPE_JSON)]
+        /// [Consumes(AppConstants.WEB_API_TYPE_JSON)]
         [Produces(AppConstants.WEB_API_TYPE_JSON)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SharedAppResultDto<bool>))]
-        [HttpDelete(DomainConstants.PRUEBA_METHODNAME_API_ADMIN_ELIMINARSOLICITUD)]
-        [ServiceFilter(typeof(ValidateModelEliminarSolicitud))]
-        public async Task<IActionResult> EliminarSolicitud(long idSolicitud, string Usuario)
+        [HttpDelete]
+        public async Task<IActionResult> EliminarAsync(int productoId)
         {
             try
             {
-                var result = await adminAppServices.EliminarSolicitud(idSolicitud, Usuario);
+                var result = await productoAppServices.EliminarProductoAsync(productoId);
 
-                return Ok(result);
+                return Ok(true);
             }
             catch (Exception ex)
             {

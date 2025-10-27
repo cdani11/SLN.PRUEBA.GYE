@@ -12,12 +12,12 @@ namespace COM.PRUEBA.DOMAIN.Constans
     {
         [PruebaDetComponenteAttribute("CP001", "PRUEBA_PortalWeb")]
         PruebaPortalWeb,
-
         [PruebaDetComponenteAttribute("CP001", "PRUEBA_ApiAuth")]
         PruebaApiAuth,
-
-        [PruebaDetComponenteAttribute("CP001", "PRUEBA_ApiAdmin")]
-        PruebaApiAdmin
+        [PruebaDetComponenteAttribute("CP001", "PRUEBA_ApiProductos")]
+        PruebaApiProductos,
+        [PruebaDetComponenteAttribute("CP001", "PRUEBA_ApiTransacciones")]
+        PruebaApiTransacciones
     }
 
     public enum PRUEBATipoORM : byte

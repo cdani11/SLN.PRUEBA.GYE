@@ -66,8 +66,6 @@ namespace COM.PRUEBA.APLICACION.SERVICE.AppServices
                 {
                     new Claim("UserId", result.Id.ToString()),
                     new Claim(ClaimTypes.Name, result.Nombre),
-                    new Claim(ClaimTypes.Role, result.NombreRol),
-                    new Claim("Rol", result.RolId.ToString())
                 };
 
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(DomainParameters.PRUEBA_JWT_KEY));

@@ -12,12 +12,12 @@ namespace COM.PRUEBA.QUERY.SERVICE
     public partial class PruebaQueryContextEF
     {
         public DbSet<LoginQueryDto> LoginQueryDto { get; set; }
-        public DbSet<SolicitudQueryDto> SolicitudQueryDto { get; set; }
+        public DbSet<ProductoQueryDto> ProductoQueryDto { get; set; }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LoginQueryDto>().HasNoKey().ToView(null);
-            modelBuilder.Entity<SolicitudQueryDto>().HasNoKey().ToView(null);
+            modelBuilder.Entity<ProductoQueryDto>().HasNoKey().ToView(null);
         }
     }
 }

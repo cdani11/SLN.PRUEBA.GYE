@@ -1,4 +1,4 @@
-﻿using COM.PRUEBA.APLICACION.SERVICE.Constants;
+using COM.PRUEBA.APLICACION.SERVICE.Constants;
 using COM.PRUEBA.DOMAIN.Constans;
 using COM.PRUEBA.DOMAIN.Parameters;
 using COM.PRUEBA.DOMAIN.Tools;
@@ -10,16 +10,16 @@ using COM.PRUEBA.QUERY.SERVICE.QueryServices;
 using COM.PRUEBA.APLICACION.Interfaces.AppServices;
 using COM.PRUEBA.APLICACION.SERVICE.AppServices;
 using PRUEBA.COMMON.PRESENTACION.Extensions;
-//using PRUEBA.ADMIN.API.Filter;
-using PRUEBA.ADMIN.API.Settings;
-using PRUEBA.ADMIN.API.Middleware;
+//using PRUEBA.TRANSAC.API.Filter;
+using PRUEBA.TRANSAC.API.Settings;
+using PRUEBA.TRANSAC.API.Middleware;
 
 Settings settings = new();
 var builder = WebApplication.CreateBuilder(args);
 
 try
 {
-    DomainParameters.APP_COMPONENTE = PRUEBAComponente.PruebaApiProductos;
+    DomainParameters.APP_COMPONENTE = PRUEBAComponente.PruebaApiTransacciones;
     DomainParameters.APP_NOMBRE = $"{DomainParameters.APP_COMPONENTE.GetNombre()} v{AppConstants.Version}";
 
     #region LOAD SETTINGS
@@ -46,8 +46,6 @@ try
     });
 
     #region INJECT SERVICES
-    builder.Services.AddScoped<IProductoAppServices, ProductoAppService>();
-    builder.Services.AddScoped<IProductoQueryService, ProductoQueryService>();
     #endregion
 
     #region INJECT FILTERS

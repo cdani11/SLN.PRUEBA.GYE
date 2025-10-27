@@ -1,6 +1,6 @@
 ﻿using COM.PRUEBA.DOMAIN.Constans;
 
-namespace PRUEBA.ADMIN.API.Constants
+namespace PRUEBA.TRANSAC.API.Constants
 {
     public static class ApiAdminConstants
     {

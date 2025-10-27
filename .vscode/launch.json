@@ -1,0 +1,75 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "PRUEBA.AUTH.API (HTTPS)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet: build",
+            "program": "${workspaceFolder}/PRUEBA.AUTH.API/bin/Debug/net8.0/PRUEBA.AUTH.API.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/PRUEBA.AUTH.API",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/swagger"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "https://localhost:7208;http://localhost:5228"
+            }
+        },
+        {
+            "name": "PRUEBA.ADMIN.API (HTTPS)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet: build",
+            "program": "${workspaceFolder}/PRUEBA.ADMIN.API/bin/Debug/net8.0/PRUEBA.ADMIN.API.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/PRUEBA.ADMIN.API",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/swagger"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "https://localhost:7154;http://localhost:5181"
+            }
+        },
+        {
+            "name": "PRUEBA.TRANSAC.API (HTTPS)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet: build",
+            "program": "${workspaceFolder}/PRUEBA.TRANSAC.API/bin/Debug/net8.0/PRUEBA.TRANSAC.API.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/PRUEBA.TRANSAC.API",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/swagger"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "https://localhost:7025;http://localhost:5151"
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Start APIs Debug",
+            "configurations": [
+                "PRUEBA.AUTH.API (HTTPS)",
+                "PRUEBA.ADMIN.API (HTTPS)",
+                "PRUEBA.TRANSAC.API (HTTPS)"
+            ]
+        }
+    ]
+}

@@ -5,13 +5,14 @@ using COM.PRUEBA.DOMAIN.exception;
 using COM.PRUEBA.DOMAIN.Extensions;
 using COM.PRUEBA.DOMAIN.Tools;
 using COM.PRUEBA.DOMAIN.Utilities;
+using PRUEBA.TRANSAC.API.Constants;
 using PRUEBA.COMMON.PRESENTACION.Extensions;
 using PRUEBA.COMMON.PRESENTACION.Utilities;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Text.Json;
 
-namespace PRUEBA.ADMIN.API.Middleware
+namespace PRUEBA.TRANSAC.API.Middleware
 {
 
     public class AuthenticationMiddleware
@@ -46,8 +47,6 @@ namespace PRUEBA.ADMIN.API.Middleware
                     await EscribirRespuestaJson(context, StatusCodes.Status400BadRequest, "Payload no encontrado.");
                     return;
                 }
-
-                await next(context);
             }
             catch (ArgumentNullException ex)
             {

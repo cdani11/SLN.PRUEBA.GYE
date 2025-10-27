@@ -143,17 +143,6 @@ namespace PRUEBA.COMMON.PRESENTACION.Extensions
                     };
                 });
         }
-        public static string GetNameRequestServiceAndController(this HttpRequest request)
-        {
-            string? action = string.Empty;
-            string? requestName = string.Empty;
-            action = request.Path.Value?.Trim();
-            if (PRUEBAConversions.DBNullToString(action).StartsWith("/"))
-                requestName = action?.Remove(0, 1);
-            else
-                requestName = action;
-            return requestName ?? string.Empty;
-        }
 
         public static string GetToken(this HttpRequest request)
         {
