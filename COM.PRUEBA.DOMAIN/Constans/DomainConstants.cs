@@ -20,16 +20,6 @@ namespace COM.PRUEBA.DOMAIN.Constans
         public const string PRUEBA_METHODNAME_API_AUTH = "Login";
         #endregion
 
-        #region NOMBRES DE MÉTODOS API ADMIN
-        public const string PRUEBA_METHODNAME_API_ADMIN_CONSULTA = "ConsultarSolicitudesPorUsuario";
-        public const string PRUEBA_METHODNAME_API_ADMIN_REGISTROSOLICITUD = "RegistrarSolicitudPorUsuario";
-        public const string PRUEBA_METHODNAME_API_ADMIN_ACTUALIZARSOLICITUD = "ActualizarSolicitudPorUsuario";
-        public const string PRUEBA_METHODNAME_API_ADMIN_ELIMINARSOLICITUD = "EliminarSolicitudPorUsuario";
-        public const string PRUEBA_METHODNAME_API_ADMIN_SUPERVISOR_CONSULTA = "ConsultarSolicitudesPendientes";
-        public const string PRUEBA_METHODNAME_API_ADMIN_SUPERVISOR_APROBACION = "AprobarSolicitud";
-        public const string PRUEBA_METHODNAME_API_ADMIN_SUPERVISOR_HISTORIALSOLICITUDES = "HistorialSolicitudesAprobadas";
-        #endregion
-
         #region NOMBRES DE MÉTODOS API PRODUCTOS
         public const string PRUEBA_METHODNAME_API_PRODUCTOS_CONSULTA = "ConsultarProductos";
         public const string PRUEBA_METHODNAME_API_PRODUCTOS_DETALLE = "ConsultarDetalleProducto";
